@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play2Love Cards</title>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/pcs12.css">
+</head>
+<body>
+    <button class="launch-btn" onclick="showCards()">💬</button>
+
+    <div class="cards-overlay" id="cardsOverlay">
+        <div class="card-container">
+            <div class="card" id="card">
+                <div class="card-face card-front" id="cardFront">
+                    <div class="card-header">
+                        <div class="card-actions">
+                            <button class="comment-btn" id="commentBtnFront">💬</button>
+                            <span class="comments-count" id="commentsCountFront">0</span>
+                            <button class="save-btn" id="saveBtnFront">🔖</button>
+                            <button class="like-btn" id="likeBtnFront">🤍</button>
+                            <span id="likeCountFront">0</span>
+                        </div>
+                    </div>
+                    <div class="card-content-container">
+                        <div class="card-content" id="cardContentFront"></div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-author" id="cardAuthorFront"></div>
+                        <div class="card-date" id="cardDateFront"></div>
+                        <div class="user-nickname" id="userNicknameFront">@play2love</div>
+                    </div>
+                </div>
+                <div class="card-face card-back" id="cardBack">
+                    <div class="card-header">
+                        <div class="card-actions">
+                            <button class="comment-btn" id="commentBtnBack">💬</button>
+                            <span class="comments-count" id="commentsCountBack">0</span>
+                            <button class="save-btn" id="saveBtnBack">🔖</button>
+                            <button class="like-btn" id="likeBtnBack">🤍</button>
+                            <span id="likeCountBack">0</span>
+                        </div>
+                    </div>
+                    <div class="card-content-container">
+                        <div class="card-content" id="cardContentBack"></div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-author" id="cardAuthorBack"></div>
+                        <div class="card-date" id="cardDateBack"></div>
+                        <div class="user-nickname" id="userNicknameBack">@play2love</div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-btns">
+                <button class="nav-btn" id="prevBtn">↑</button>
+                <button class="nav-btn" id="nextBtn">↓</button>
+            </div>
+            <div class="swipe-hint" id="swipeHint">Click card to flip</div>
+        </div>
+        <button class="close-btn" id="closeBtn">✕</button>
+    </div>
+
+    <!-- Comments Section -->
+    <div class="comments-section" id="commentsSection">
+        <div class="comments-header">
+            <h3>Comments</h3>
+            <button class="close-comments-btn" id="closeCommentsBtn">✕</button>
+        </div>
+        <div class="comments-container" id="commentsContainer">
+            <div class="card-preview-container">
+                <div class="card-preview">
+                    <div class="card-preview-content" id="commentCardPreviewContent">Card Content Preview</div>
+                    <div class="card-preview-meta">
+                        <span>— You</span>
+                        <span id="commentCardDate">13/5/2025</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Comments will be loaded here -->
+        </div>
+        <div class="comment-form">
+            <input type="text" class="comment-input" id="commentInput" placeholder="Add a comment...">
+            <button class="comment-submit" id="commentSubmit">➤</button>
+        </div>
+    </div>
+
+    <!-- Audio element for flip sound -->
+    <audio id="flipSound">
+        <source src="assets/audio/Cardsound.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Custom JavaScript -->
+    <script src="js/pcs12.js"></script>
+</body>
+</html>

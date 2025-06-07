@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch & Win - Animal Game</title>
+    <link rel="stylesheet" href="sur.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="love-theme">
+    <!-- Close button to return to Code A -->
+    <div class="close-app-btn" id="close-app-btn">
+        <i class="fas fa-times"></i>
+    </div>
+
+    <div class="header">
+        <h1>Scratch & Win</h1>
+        <p id="surprise-text">Surprise me! adminn 12345</p>
+        
+        <div class="level-buttons">
+            <button class="level-btn love active" data-level="love">Love</button>
+            <button class="level-btn romantic" data-level="romantic">Romantic</button>
+            <button class="level-btn erotic" data-level="erotic">Erotic</button>
+        </div>
+        <div class="controls">
+            <button class="refresh-btn">REFRESH</button>
+            <div class="language-toggle">
+                <span>English</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="language-toggle">
+                    <span class="slider"></span>
+                </label>
+                <span>Hindi</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="cards-container">
+        <!-- Cards will be generated here by JavaScript -->
+    </div>
+
+    <!-- Admin button -->
+    <div class="admin-btn" id="admin-btn">
+        <i class="fas fa-user-cog"></i>
+    </div>
+
+    <!-- Login modal -->
+    <div class="login-modal" id="login-modal">
+        <div class="login-form">
+            <button class="close-btn" id="close-login">&times;</button>
+            <h2>Admin Login</h2>
+            <div class="form-group">
+                <input type="text" id="username" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" placeholder="Password">
+                <i class="fas fa-eye password-toggle" id="password-toggle"></i>
+            </div>
+            <button id="login-btn">Login</button>
+        </div>
+    </div>
+
+    <!-- Admin panel -->
+    <div class="admin-panel" id="admin-panel">
+        <div class="admin-header">
+            <h2>Surprise Me Settings</h2>
+            <button class="admin-close-btn" id="admin-close-btn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="admin-content">
+            <div class="admin-section">
+                <h3>Add New Card</h3>
+                <div class="form-group">
+                    <label for="card-image-url">Upload Image (Optional)</label>
+                    <div class="image-upload-container" id="image-upload-container">
+                        <input type="file" id="card-image-upload" accept="image/*">
+                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                        <img id="uploaded-image-preview" src="" alt="Preview">
+                        <p class="upload-text">Click to upload image (optional)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="card-english-text">English Text</label>
+                    <textarea id="card-english-text" placeholder="Enter text in English" maxlength="1000"></textarea>
+                    <div class="word-count" id="english-word-count">0/1000 characters</div>
+                </div>
+                <div class="form-group">
+                    <label for="card-hindi-text">Hindi Text</label>
+                    <textarea id="card-hindi-text" placeholder="Enter text in Hindi" maxlength="1000"></textarea>
+                    <div class="word-count" id="hindi-word-count">0/1000 characters</div>
+                </div>
+                <div class="form-group">
+                    <label for="card-level">Level</label>
+                    <select id="card-level">
+                        <option value="love">Love</option>
+                        <option value="romantic">Romantic</option>
+                        <option value="erotic">Erotic</option>
+                    </select>
+                </div>
+                <button class="admin-btn-primary" id="add-card-btn">Add Card</button>
+            </div>
+            
+            <div class="admin-section">
+                <h3>Manage Existing Cards</h3>
+                <div class="bulk-actions">
+                    <div class="bulk-select">
+                        <input type="checkbox" id="select-all-cards">
+                        <label for="select-all-cards">Select All</label>
+                    </div>
+                    <button class="admin-btn-primary" id="delete-selected-btn">Delete Selected</button>
+                </div>
+                <div class="cards-list" id="cards-list">
+                    <!-- Cards will be listed here -->
+                </div>
+            </div>
+            
+            <div class="admin-section">
+                <h3>Admin Settings</h3>
+                <div class="form-group">
+                    <label for="admin-username">Change Username</label>
+                    <input type="text" id="admin-username" placeholder="New username">
+                </div>
+                <div class="form-group">
+                    <label for="admin-password">Change Password</label>
+                    <input type="password" id="admin-password" placeholder="New password">
+                </div>
+                <button class="admin-btn-primary" id="save-admin-btn">Save Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen overlay -->
+    <div class="fullscreen-overlay" id="fullscreen-overlay">
+        <div class="close-fullscreen">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="fullscreen-content">
+            <img src="" alt="Fullscreen image" class="fullscreen-image" id="fullscreen-image" style="display: none;">
+            <div class="fullscreen-text-container" id="fullscreen-text-container">
+                <div class="fullscreen-text" id="fullscreen-text"></div>
+            </div>
+            <div class="fullscreen-level" id="fullscreen-level"></div>
+            <div class="language-toggle" style="margin-top: 20px;">
+                <span>English</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="fullscreen-language-toggle">
+                    <span class="slider"></span>
+                </label>
+                <span>Hindi</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        Card added successfully!
+    </div>
+
+    <script src="sur.js"></script>
+</body>
+</html>

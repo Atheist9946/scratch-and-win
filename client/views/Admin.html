@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch & Win</title>
+    <link rel="stylesheet" href="css/admin.css"> <!-- अपडेट: styles.css को admin.css में बदला -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+
+    <!-- Fullscreen Overlay -->
+    <div class="fullscreen-overlay" id="fullscreen-overlay">
+        <div class="close-fullscreen">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="fullscreen-content">
+            <img src="" alt="Fullscreen image" class="fullscreen-image" id="fullscreen-image">
+            <div class="fullscreen-text" id="fullscreen-text"></div>
+        </div>
+    </div>
+
+    <!-- Site Disclaimer Modal -->
+    <div id="disclaimerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('disclaimerModal')">×</span>
+            <h2>Site Disclaimer</h2>
+            <div id="disclaimerContent"></div>
+            <button class="btn" onclick="acceptDisclaimer()">I Understand</button>
+        </div>
+    </div>
+
+    <!-- Check Notification Alert -->
+    <div id="notificationAlert" class="alert-popup">
+        <h3 style="color: red;">Check Notification</h3>
+        <p>Please check the latest notification for important updates.</p>
+        <button onclick="closeAlert('notificationAlert')">OK</button>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="10 user mod code.html">Sign Up/Login</a>
+        <a href="21 surprise me perfect.html">Surprise Me!</a>
+        <a href="#" onclick="showPage('notifications')">Notifications</a>
+        <a href="#" onclick="showPage('comments')">Comments</a>
+        <a href="#" onclick="showPage('about')">About Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="#" onclick="showPage('contact')">Contact Us</a>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="#" onclick="showPage('disclaimer')">Site Disclaimer</a>
+        <a href="#" onclick="showAdminLogin()">Admin Login</a>
+    </div>
+
+    <!-- Sidebar Open Button -->
+    <button class="openbtn" onclick="openNav()">☰</button>
+
+    <!-- Page Contents -->
+    <div id="home" class="page-content active-page">
+        <h1>Scratch & Win</h1>
+        
+        <!-- Refresh Button -->
+        <button class="btn" id="refresh-button" onclick="resetCards()">Refresh Cards</button>
+
+        <!-- Scroll Buttons -->
+        <div class="scroll-buttons" id="scroll-buttons">
+            <button class="btn" id="scroll-up-btn" onmousedown="startScrolling('up')" onmouseup="stopScrolling()" ontouchstart="startScrolling('up')" ontouchend="stopScrolling()">↓</button>
+            <button class="btn" id="scroll-down-btn" onmousedown="startScrolling('down')" onmouseup="stopScrolling()" ontouchstart="startScrolling('down')" ontouchend="stopScrolling()">↑</button>
+        </div>
+
+        <!-- Scratch Cards Container -->
+        <div class="container" id="container"></div>
+    </div>
+
+    <div id="notifications" class="page-content">
+        <h1>Notifications</h1>
+        <div id="notificationsContent"></div>
+    </div>
+
+    <div id="comments" class="page-content">
+        <h1>Comments</h1>
+        <div id="commentsContainer">
+            <div class="comment-form">
+                <h3>Add Your Comment</h3>
+                <input type="text" id="commentName" placeholder="Your Name" required>
+                <textarea id="commentText" placeholder="Your Comment" rows="4" required></textarea>
+                <button type="button" class="btn" onclick="addComment()">Submit Comment</button>
+            </div>
+            
+            <div class="comments-container">
+                <h3>Recent Comments</h3>
+                <div id="recentComments"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="about" class="page-content">
+        <h1>About Us</h1>
+        <p>This is a placeholder for the About Us page content. You can add information about your company or organization here.</p>
+        <p>For now, this is just sample text to show how the page would look with content.</p>
+    </div>
+
+    <div id="contact" class="page-content">
+        <h1>Contact Us</h1>
+        <p>This is a placeholder for the Contact Us page content. You can add your contact information, address, and contact form here.</p>
+        <p>For now, this is just sample text to show how the page would look with content.</p>
+    </div>
+
+    <div id="disclaimer" class="page-content">
+        <h1>Site Disclaimer</h1>
+        <div id="disclaimerPageContent"></div>
+    </div>
+
+    <!-- Login Form -->
+    <div class="login-form" id="login-form">
+        <div class="form-title">Admin Login</div>
+        
+        <div class="input-group">
+            <input type="text" id="username" placeholder="Username" aria-label="Username">
+        </div>
+        
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Password" aria-label="Password">
+            <span class="toggle-password" onclick="togglePassword('password')">👁️</span>
+        </div>
+        
+        <button class="btn" onclick="adminLogin()">Login</button>
+        
+        <button class="secondary-btn" onclick="closeLogin()">Close</button>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="admin-panel">
+        <h2>Admin Panel</h2>
+        
+        <!-- Image Management Section -->
+        <div class="color-section">
+            <h3>Prize Management</h3>
+            <label>Upload Image (Optional):</label>
+            <input type="file" id="imageUpload" accept="image/*" aria-label="Upload Image"><br><br>
+
+            <label>Prize Text (Required, max 1000 chars):</label>
+            <textarea id="prizeText" placeholder="Enter prize text (required)" rows="4" maxlength="1000" style="width: 100%;" required></textarea><br><br>
+
+            <button class="btn" onclick="addPrize()">Add Prize</button><br><br>
+
+            <label>Delete Prize:</label>
+            <select id="deletePrizeSelect" aria-label="Select Prize to Delete"></select>
+            <button class="btn" onclick="deletePrize()">Delete</button>
+        </div>
+        
+        <!-- Notification Management -->
+        <div class="color-section">
+            <h3>Notification Management</h3>
+            <label>Current Notification:</label>
+            <textarea id="notificationText" rows="4" style="width: 100%;"></textarea><br><br>
+            <button class="btn" onclick="updateNotification()">Update Notification</button>
+        </div>
+        
+        <!-- Comment Management -->
+        <div class="color-section">
+            <h3>Comment Management</h3>
+            <div class="select-all-comments">
+                <input type="checkbox" id="selectAllComments" onclick="toggleSelectAllComments()">
+                <label for="selectAllComments">Select All Comments</label>
+            </div>
+            <div id="adminCommentsList" style="max-height: 200px; overflow-y: auto; margin-bottom: 15px;"></div>
+            <button class="btn" onclick="deleteSelectedComments()">Delete Selected</button>
+        </div>
+        
+        <!-- Alert Settings -->
+        <div class="color-section">
+            <h3>Alert Settings</h3>
+            <label>
+                <input type="checkbox" id="enableAlertCheckbox"> Enable "Check Notification" Alert
+            </label><br><br>
+            <label>Alert Display Time (seconds):</label>
+            <input type="number" id="alertDisplayTime" min="1" max="60" value="5">
+        </div>
+        
+        <!-- Card Appearance Section -->
+        <div class="color-section">
+            <h3>Card Appearance</h3>
+            <label>Card Color Before Scratching:</label>
+            <input type="color" id="cardColorBefore" value="#F06292" aria-label="Card Color Before Scratching"><br><br>
+
+            <label>Card Color After Scratching:</label>
+            <input type="color" id="cardColorAfter" value="#FFC1E3" aria-label="Card Color After Scratching"><br><br>
+
+            <label>Revealed Text Size:</label>
+            <input type="number" id="revealedTextSize" min="10" max="50" value="14" aria-label="Revealed Text Size"><br><br>
+
+            <label>Reveal Animation:</label>
+            <select id="revealAnimation" aria-label="Reveal Animation Style">
+                <option value="scratch">Scratch to Reveal</option>
+                <option value="tap">Tap to Reveal</option>
+                <option value="flip">Flip to Reveal</option>
+            </select>
+        </div>
+        
+        <!-- Color Customization Section -->
+        <div class="color-section">
+            <h3>Color Customization</h3>
+            
+            <div class="color-control">
+                <label>Background Color:</label>
+                <input type="color" id="bgColor" value="#FFEBEE">
+                <input type="text" id="bgColorHex" value="#FFEBEE" readonly>
+            </div>
+            <div class="color-description">Main page background color</div>
+            
+            <div class="color-control">
+                <label>Text Color:</label>
+                <input type="color" id="textColor" value="#6A1B9A">
+                <input type="text" id="textColorHex" value="#6A1B9A" readonly>
+            </div>
+            <div class="color-description">Primary text color throughout the app</div>
+            
+            <div class="color-control">
+                <label>Title Color:</label>
+                <input type="color" id="titleColor" value="#E91E63">
+                <input type="text" id="titleColorHex" value="#E91E63" readonly>
+            </div>
+            <div class="color-description">Color for headings and titles</div>
+            
+            <div class="color-control">
+                <label>Button Color:</label>
+                <input type="color" id="buttonColor" value="#E91E63">
+                <input type="text" id="buttonColorHex" value="#E91E63" readonly>
+            </div>
+            <div class="color-description">Main button background color</div>
+            
+            <div class="color-control">
+                <label>Button Hover Color:</label>
+                <input type="color" id="buttonHoverColor" value="#C2185B">
+                <input type="text" id="buttonHoverColorHex" value="#C2185B" readonly>
+            </div>
+            <div class="color-description">Button color on hover state</div>
+            
+            <div class="color-control">
+                <label>Sidebar Background:</label>
+                <input type="color" id="sidebarBgColor" value="#FFEBEE">
+                <input type="text" id="sidebarBgColorHex" value="#FFEBEE" readonly>
+            </div>
+            <div class="color-description">Sidebar menu background color</div>
+            
+            <div class="color-control">
+                <label>Sidebar Text:</label>
+                <input type="color" id="sidebarTextColor" value="#CD5C5C">
+                <input type="text" id="sidebarTextColorHex" value="#CD5C5C" readonly>
+            </div>
+            <div class="color-description">Sidebar menu text color</div>
+            
+            <div class="color-control">
+                <label>Page Content BG:</label>
+                <input type="color" id="contentBgColor" value="#FCE4EC">
+                <input type="text" id="contentBgColorHex" value="#FCE4EC" readonly>
+            </div>
+            <div class="color-description">Content area background color</div>
+            
+            <div class="color-control">
+                <label>Form Background:</label>
+                <input type="color" id="formBgColor" value="#FCE4EC">
+                <input type="text" id="formBgColorHex" value="#FCE4EC" readonly>
+            </div>
+            <div class="color-description">Login/Admin form background</div>
+            
+            <div class="color-control">
+                <label>Form Text Color:</label>
+                <input type="color" id="formTextColor" value="#6A1B9A">
+                <input type="text" id="formTextColorHex" value="#6A1B9A" readonly>
+            </div>
+            <div class="color-description">Text color in forms</div>
+            
+            <div class="color-control">
+                <label>Revealed Text Color:</label>
+                <input type="color" id="revealedTextColor" value="#B71C1C">
+                <input type="text" id="revealedTextColorHex" value="#B71C1C" readonly>
+            </div>
+            <div class="color-description">Text color when prize is revealed</div>
+            
+            <button class="btn" onclick="applyColorSettings()">Apply Colors</button>
+            <button class="btn secondary-btn" onclick="resetColors()">Reset to Default Colors</button>
+        </div>
+        
+        <button class="btn" onclick="applySettings()">Apply All Settings</button><br><br>
+        <button class="btn" onclick="adminLogout()">Logout</button>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

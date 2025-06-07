@@ -1,0 +1,1097 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FFEBEE; /* Default light pink */
+    transition: background-color 0.5s;
+}
+
+/* Close button in top-left corner */
+.close-app-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s;
+}
+
+.close-app-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    transform: scale(1.1);
+}
+
+.close-app-btn i {
+    color: white;
+    font-size: 20px;
+}
+
+/* Color themes for different levels */
+body.love-theme {
+    background-color: #DB7093; /* Light pink */
+}
+
+body.romantic-theme {
+    background-color: #FF1493; /* Medium pink */
+}
+
+body.erotic-theme {
+    background-color: #F8BBD0; /* Dark pink */
+}
+
+/* Header styles - Made more compact */
+.header {
+    text-align: center;
+    padding: 10px 0; /* Reduced padding */
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+/* Header themes for different levels */
+.love-theme .header {
+    background-color: #FFCDD2; /* Light pink */
+    border-bottom: 3px solid #E91E63;
+}
+
+.romantic-theme .header {
+    background-color: #F8BBD0; /* Medium pink */
+    border-bottom: 3px solid #C2185B;
+}
+
+.erotic-theme .header {
+    background-color: #F48FB1; /* Dark pink */
+    border-bottom: 3px solid #880E4F;
+}
+
+.header h1 {
+    font-size: 1.8rem; /* Reduced font size */
+    margin-bottom: 5px; /* Reduced margin */
+    transition: all 0.3s;
+}
+
+/* Title colors for different levels */
+.love-theme .header h1 {
+    color: #E91E63; /* Deep pink */
+    text-shadow: 1px 1px 2px rgba(233,30,99,0.2);
+}
+
+.romantic-theme .header h1 {
+    color: #C2185B; /* Deep magenta */
+    text-shadow: 1px 1px 2px rgba(194,24,91,0.2);
+}
+
+.erotic-theme .header h1 {
+    color: #880E4F; /* Deep purple */
+    text-shadow: 1px 1px 2px rgba(136,14,79,0.2);
+}
+
+.header p {
+    font-size: 1rem; /* Reduced font size */
+    color: #888;
+    margin-bottom: 10px; /* Reduced margin */
+}
+
+.level-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Reduced gap */
+    margin-bottom: 10px; /* Reduced margin */
+}
+
+.level-btn {
+    padding: 8px 15px; /* Reduced padding */
+    border: none;
+    border-radius: 30px;
+    font-size: 0.9rem; /* Reduced font size */
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Level button styles */
+.level-btn.love {
+    background-color: #FFCDD2;
+    color: #E91E63;
+    border: 2px solid #E91E63;
+}
+
+.level-btn.romantic {
+    background-color: #F8BBD0;
+    color: #C2185B;
+    border: 2px solid #C2185B;
+}
+
+.level-btn.erotic {
+    background-color: #F48FB1;
+    color: #880E4F;
+    border: 2px solid #880E4F;
+}
+
+.level-btn.active {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Active button styles for each level */
+.love-theme .level-btn.love.active {
+    background-color: #E91E63;
+    color: white;
+}
+
+.romantic-theme .level-btn.romantic.active {
+    background-color: #C2185B;
+    color: white;
+}
+
+.erotic-theme .level-btn.erotic.active {
+    background-color: #880E4F;
+    color: white;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* Reduced gap */
+    margin-bottom: 10px; /* Reduced margin */
+}
+
+.refresh-btn {
+    padding: 8px 15px; /* Reduced padding */
+    border: none;
+    border-radius: 30px;
+    font-size: 0.9rem; /* Reduced font size */
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Refresh button styles for each level */
+.love-theme .refresh-btn {
+    background-color: #E91E63;
+    color: white;
+}
+
+.romantic-theme .refresh-btn {
+    background-color: #C2185B;
+    color: white;
+}
+
+.erotic-theme .refresh-btn {
+    background-color: #880E4F;
+    color: white;
+}
+
+.refresh-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.language-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Reduced gap */
+    font-weight: bold;
+    font-size: 0.9rem; /* Reduced font size */
+}
+
+/* Language toggle text colors for each level */
+.love-theme .language-toggle span {
+    color: #E91E63;
+}
+
+.romantic-theme .language-toggle span {
+    color: #C2185B;
+}
+
+.erotic-theme .language-toggle span {
+    color: #880E4F;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px; /* Reduced width */
+    height: 25px; /* Reduced height */
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+/* Slider styles for each level */
+.love-theme .slider {
+    background-color: #FFCDD2;
+}
+
+.romantic-theme .slider {
+    background-color: #F8BBD0;
+}
+
+.erotic-theme .slider {
+    background-color: #F48FB1;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px; /* Reduced size */
+    width: 18px; /* Reduced size */
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+/* Checked slider styles for each level */
+.love-theme input:checked + .slider {
+    background-color: #E91E63;
+}
+
+.romantic-theme input:checked + .slider {
+    background-color: #C2185B;
+}
+
+.erotic-theme input:checked + .slider {
+    background-color: #880E4F;
+}
+
+input:checked + .slider:before {
+    transform: translateX(25px); /* Adjusted for new size */
+}
+
+/* Card styles */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Reduced gap */
+    margin: 15px auto; /* Reduced margin */
+    padding: 15px; /* Reduced padding */
+    width: 100%;
+    max-width: 500px;
+}
+
+.card {
+    width: 100%;
+    height: 200px;
+    background: #FFF8F0;
+    /* card colour before scratch */
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    perspective: 1000px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Card flip animation - Changed to vertical flip */
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    /* speed of flip */
+    transform-style: preserve-3d;
+}
+
+.card.revealed .card-inner {
+    transform: rotateX(180deg); /* Changed from rotateY to rotateX for vertical flip */
+}
+
+/* Remove shadow when revealed */
+.card.revealed {
+    box-shadow: none !important;
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-front img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}
+
+.card-back {
+    transform: rotateX(180deg); /* Changed from rotateY to rotateX for vertical flip */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.result {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.result-content {
+    width: 100%;
+    height: calc(100% - 50px); /* Space for level indicator */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.result img {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.result img:hover {
+    transform: scale(1.05);
+}
+
+.result-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    word-break: break-word;
+    overflow-y: auto;
+    max-height: 100%;
+}
+
+.result-text.love-text {
+    color: #E91E63;
+}
+
+.result-text.romantic-text {
+    color: #C2185B;
+}
+
+.result-text.erotic-text {
+    color: #880E4F;
+}
+
+.level-indicator {
+    padding: 5px 15px; /* Reduced padding */
+    border-radius: 20px;
+    font-size: 0.8rem; /* Reduced font size */
+    font-weight: bold;
+    margin-top: auto; /* Push to bottom */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: sticky;
+    bottom: 0;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Level indicator styles */
+.love-level {
+    background-color: #FFCDD2;
+    color: #E91E63;
+    border: 1px solid #E91E63;
+}
+
+.romantic-level {
+    background-color: #F8BBD0;
+    color: #C2185B;
+    border: 1px solid #C2185B;
+}
+
+.erotic-level {
+    background-color: #F48FB1;
+    color: #880E4F;
+    border: 1px solid #880E4F;
+}
+
+/* Fullscreen button styles */
+.fullscreen-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    transform: scale(0.8);
+}
+
+.card:hover .fullscreen-btn {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.fullscreen-btn i {
+    font-size: 16px;
+    color: white;
+}
+
+/* Fullscreen button styles for each level */
+.love-theme .fullscreen-btn {
+    background-color: #E91E63;
+}
+
+.romantic-theme .fullscreen-btn {
+    background-color: #C2185B;
+}
+
+.erotic-theme .fullscreen-btn {
+    background-color: #880E4F;
+}
+
+/* Fullscreen overlay styles */
+.fullscreen-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.fullscreen-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.fullscreen-content {
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding-top: 50px; /* Space for close button */
+}
+
+.fullscreen-image {
+    max-width: 100%;
+    max-height: 60vh;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Improved fullscreen text container */
+.fullscreen-text-container {
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.fullscreen-text {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+    word-break: break-word;
+}
+
+.fullscreen-level {
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.close-fullscreen {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    z-index: 2001;
+}
+
+.close-fullscreen:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.close-fullscreen i {
+    color: white;
+    font-size: 20px;
+}
+
+/* Admin button styles */
+.admin-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s;
+}
+
+.admin-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    transform: scale(1.1);
+}
+
+.admin-btn i {
+    color: white;
+    font-size: 20px;
+}
+
+/* Login modal styles */
+.login-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.login-modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.login-form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    cursor: pointer;
+    color: #888;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #E91E63;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-form button:hover {
+    background-color: #C2185B;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #888;
+}
+
+/* Admin panel styles */
+.admin-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 3000;
+    overflow-y: auto;
+    display: none;
+}
+
+.admin-panel.active {
+    display: block;
+}
+
+.admin-header {
+    background-color: #E91E63;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.admin-header h2 {
+    margin: 0;
+}
+
+.admin-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.admin-content {
+    padding: 20px;
+}
+
+.admin-section {
+    margin-bottom: 30px;
+}
+
+.admin-section h3 {
+    border-bottom: 2px solid #E91E63;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: #E91E63;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    min-height: 100px;
+    resize: vertical;
+    maxlength: 1000;
+}
+
+.admin-btn-primary {
+    background-color: #E91E63;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.admin-btn-primary:hover {
+    background-color: #C2185B;
+}
+
+.cards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.card-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-item-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-grow: 1;
+}
+
+.card-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.card-item-text {
+    flex-grow: 1;
+}
+
+.card-item h4 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+}
+
+.card-item p {
+    margin: 0 0 5px 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.card-item .level-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.love-badge {
+    background-color: #FFCDD2;
+    color: #E91E63;
+}
+
+.romantic-badge {
+    background-color: #F8BBD0;
+    color: #C2185B;
+}
+
+.erotic-badge {
+    background-color: #F48FB1;
+    color: #880E4F;
+}
+
+.card-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.delete-btn {
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.preview-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.card-checkbox {
+    margin-right: 10px;
+}
+
+/* Image upload styles */
+.image-upload-container {
+    border: 2px dashed #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.image-upload-container.has-image {
+    border-color: #4CAF50;
+}
+
+.image-upload-container input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.image-upload-container img {
+    max-width: 100%;
+    max-height: 150px;
+    margin-bottom: 10px;
+    display: none;
+}
+
+.image-upload-container .upload-icon {
+    font-size: 50px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.image-upload-container .upload-text {
+    color: #888;
+}
+
+.word-count {
+    font-size: 12px;
+    color: #888;
+    text-align: right;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+/* Notification styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 4000;
+    transform: translateX(200%);
+    transition: transform 0.3s ease-out;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification.error {
+    background-color: #f44336;
+}
+
+/* Bulk actions styles */
+.bulk-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.bulk-select {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.6rem;
+    }
+    
+    .level-buttons {
+        flex-wrap: wrap;
+    }
+    
+    .level-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .refresh-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .card {
+        height: 180px;
+    }
+
+    .fullscreen-text {
+        font-size: 1.5rem;
+    }
+
+    .fullscreen-level {
+        font-size: 1rem;
+        padding: 8px 20px;
+    }
+
+    .card-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card-item-content {
+        width: 100%;
+    }
+
+    .card-item-actions {
+        width: 100%;
+        justify-content: flex-end;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.4rem;
+    }
+    
+    .level-buttons {
+        gap: 5px;
+    }
+    
+    .level-btn {
+        padding: 5px 10px;
+        font-size: 0.7rem;
+    }
+    
+    .controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .card {
+        height: 160px;
+    }
+    
+    .result-text {
+        font-size: 20px;
+    }
+
+    .fullscreen-text {
+        font-size: 1.2rem;
+    }
+
+    .fullscreen-level {
+        font-size: 0.9rem;
+        padding: 6px 15px;
+    }
+
+    .admin-content {
+        padding: 15px;
+    }
+}
