@@ -1,0 +1,46 @@
+[33mcommit e163f43ba610a9ffadb6a62d8f9656c262abe000[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 1452a26 ac54eeb
+Author: Atheist9946 <103513601+Atheist9946@users.noreply.github.com>
+Date:   Tue Jun 10 08:12:41 2025 +0530
+
+    Merge branch 'main' from origin to resolve conflicts
+
+[33mcommit ac54eeb822e68ff3bd5b6e93a121c7e41014527b[m
+Author: Atheist9946 <103513601+Atheist9946@users.noreply.github.com>
+Date:   Tue Jun 10 07:28:08 2025 +0530
+
+    Delete server/akit directory
+
+D	server/akit/mm.html
+
+[33mcommit dfe87f11069b7fc05666d5149204d791a250aeba[m
+Author: Atheist9946 <103513601+Atheist9946@users.noreply.github.com>
+Date:   Tue Jun 10 07:25:39 2025 +0530
+
+    Create mm.html
+
+A	server/akit/mm.html
+
+[33mcommit 1452a260b21c74d6926960993a5823aa86eb3e40[m
+Author: Atheist9946 <103513601+Atheist9946@users.noreply.github.com>
+Date:   Tue Jun 10 07:24:32 2025 +0530
+
+    delete
+
+D	server/akit2
+
+[33mcommit 86c2b33ddfe0d288cf5a0884faf4b4cca9f2dbf7[m
+Author: Atheist9946 <103513601+Atheist9946@users.noreply.github.com>
+Date:   Sun Jun 8 20:04:21 2025 +0530
+
+    hsr
+
+M	client/views/PCS12.html
+
+[33mcommit 96cfe7bffa777dd04bb8ec25cc44bd486629ff71[m
+Author: Atheist9946 <103513601+Atheist9946@users.noreply.github.com>
+Date:   Sun Jun 8 19:14:49 2025 +0530
+
+    hai
+
+M	.gitignore
